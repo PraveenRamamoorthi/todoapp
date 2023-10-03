@@ -1,29 +1,16 @@
-import { Box, Button } from "@mui/material";
+import {Box, Button} from '@mui/material';
+import {useState} from 'react';
 function ListName(props) {
+  const [addedList, setAddedList] = useState(props.list);
 
 
-  const onClickDelete = () => {
-    console.log(props);
-    fetch(`https://ragu-hotel-api.herokuapp.com/api/todo/${props.list._id}`, {
-      method: 'DELETE'
-    })
-      .then(response => response.json)
-      .then(data => {
-        console.log(props.fetchList());
-      })
-  }
-
+  console.log(props.index);
   return (
-    <Box className="content" style={{ display: "flex" }} key={props.index}>
+    <Box className="content" style={{display: 'flex'}} key={props.index}>
       {/* <p>{props.list}</p> */}
-      <p> {props.list.data}</p>
-      <Button
-        variant="contained"
-        onClick={onClickDelete}
-      >
-        delete
-      </Button>
-    </Box >
+      <p> {addedList}</p>
+    </Box>
   );
 }
 export default ListName;
+
